@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd xgboost && mkdir build && cd build && \
+cd xgboost && mkdir -p build && cd build && \
 cmake .. -DUSE_NCCL=ON -DUSE_CUDA=ON \
          -DGDF_INCLUDE_DIR=$CONDA_PREFIX/include \
          -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX && \
