@@ -3,7 +3,7 @@
 export RAPIDS_ROOT=$(pwd)
 
 bash utils/build-conda-env.sh && \
-source activate cudf && \
+source activate rapids && \
 bash utils/build-cudf.sh && \
 bash utils/build-cuml.sh && \
 #bash utils/build-cugraph.sh && \
