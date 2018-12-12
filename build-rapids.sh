@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export RAPIDS_ROOT=$(pwd)
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib
 
 bash utils/build-conda-env.sh
 
