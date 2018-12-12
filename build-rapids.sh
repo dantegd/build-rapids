@@ -5,7 +5,6 @@ export RAPIDS_ROOT=$(pwd)
 bash utils/build-conda-env.sh
 
 source activate rapids && \
-export LD_LIBRARY_PATH:$LD_LIBRARY_PATH:$CONDA_PREFIX && \
 bash utils/build-cudf.sh && \
 bash utils/build-cuml.sh && \
 #bash utils/build-cugraph.sh && \
