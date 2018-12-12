@@ -29,7 +29,7 @@ $ bash Miniconda3-latest-Linux-x86_64.sh
 
 Some notes:
 * Be sure to add `miniconda3` to your `PATH`
-* You may need the following specified in your `.c`:
+* You may need the following specified in your `.bashrc`:
 ```bash
 # cuda
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/lib:$LD_LIBRARY_PATH
