@@ -20,7 +20,7 @@ and requires other frameworks to be useful in an end-to-end workflow, like:
 
 ## Procedure
 
-1. Install `miniconda3/bin`:
+1. Install `miniconda3`:
 
 ```bash
 $ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
@@ -28,7 +28,7 @@ $ bash Miniconda3-latest-Linux-x86_64.sh
 ```
 
 Some notes:
-* Be sure to add `miniconda3` to your `PATH`
+* Be sure to add `miniconda3/bin` to your `PATH`
 * You may need the following specified in your `.bashrc`:
 ```bash
 # cuda
