@@ -23,7 +23,7 @@ and requires other frameworks to be useful in an end-to-end workflow, like:
 1. Install `miniconda3`:
 
 ```bash
-$ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
+$ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 $ bash Miniconda3-latest-Linux-x86_64.sh
 ```
 
