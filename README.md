@@ -46,7 +46,7 @@ export NUMBAPRO_LIBDEVICE=/usr/local/cuda/nvvm/libdevice
 $ git clone --recursive https://github.com/rapidsai/build-rapids.git
 ```
 
-3. Build RAPIDS:
+3. Build and install RAPIDS:
 
 ```bash
 $ cd build-rapids
