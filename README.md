@@ -43,7 +43,7 @@ export NUMBAPRO_LIBDEVICE=/usr/local/cuda/nvvm/libdevice
 2. Clone this repository:
 
 ```bash
-$ git clone --recursive https://github.com/rapidsai/build-rapids.git
+$ git clone --recursive https://github.com/mt-jones/build-rapids.git
 ```
 
 3. Build and install RAPIDS:
