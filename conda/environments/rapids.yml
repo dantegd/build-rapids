@@ -9,7 +9,7 @@ dependencies:
 - cmake>=3.12
 - python=3.6.*
 - pytest
-- numba>=0.40.0dev
+- numba=0.41.0dev0
 - pandas=0.20.3
 - pyarrow=0.10.0
 - notebook>=0.5.0
