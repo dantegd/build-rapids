@@ -52,3 +52,23 @@ $ git clone --recursive https://github.com/mt-jones/build-rapids.git
 $ cd build-rapids
 $ bash build-rapids.sh
 ```
+
+You may specify compiler version by specifying `CC`, `CXX`, `CUDAHOSTCXX`:
+
+```bash
+CC=/path/to/gcc-X \
+CXX=/path/to/g++-X \
+CUDAHOSTCXX=/path/to/g++-X \
+bash build-rapids.sh
+```
+
+where `X` is the version number. For example,
+
+```bash
+CC=/path/to/gcc-5 \
+CXX=/path/to/g++-5 \
+CUDAHOSTCXX=/path/to/g++-5 \
+bash build-rapids.sh
+```
+
+compiles RAPIDS using GCC version 5.
