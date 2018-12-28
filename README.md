@@ -53,7 +53,7 @@ $ cd build-rapids
 $ bash build-rapids.sh
 ```
 
-You may specify compiler version by specifying `CC`, `CXX`, `CUDAHOSTCXX`:
+If you have multiple versions of GCC installed, you may specify compiler version by defining `CC`, `CXX`, `CUDAHOSTCXX`:
 
 ```bash
 CC=/path/to/gcc-X \
