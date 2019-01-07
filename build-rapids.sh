@@ -7,12 +7,14 @@ export RAPIDS_ENV_NAME="cuml-$d"
 while getopts g: opt; do
   case $opt in
   g)
-      GPU_ARCHS=$OPTARG
+      export GPU_ARCHS=$OPTARG
       ;;
   esac
 done
 
 echo -e "\n Building new conda environment for cuML development: $RAPIDS_ENV_NAME"
+
+
 bash utils/build-conda-env.sh
 
 source activate $RAPIDS_ENV_NAME && \
