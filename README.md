@@ -1,24 +1,9 @@
-# RAPIDS
+# Dante's Unofficial RAPIDS cuML Development utilities
+**Version: 01/07/19**
 
-[RAPIDS: The Rapid Acceleration Platform for Integrated Data Science](https://rapids.ai) comprises the following:
+*This is a collection of scripts that I've developed to test cuDF, cuML and their integration for my personal development purposes. The objective is to have this branch up to date with build process changes in either repository to aid in **development** of cuML, not for production use of the libraries.*
 
-* cudf
-* cuml
-* cugraph
-
-and requires other frameworks to be useful in an end-to-end workflow, like:
-
-* xgboost
-* dask-cudf
-* dask-xgboost
-
-... This list is likely to grow. In an effort to streamline one's ability to build-from-source all of the libraries in a single, unified environment, this repository aggregates:
-
-* A set of `utils` to build and install all of the library components that make up RAPIDS
-* A `conda-environments/rapids.yml` to specify all dependencies for all the library components that make up RAPIDS
-* A set of version-fixed repositories which are guaranteed to work together, so that developers/users always have something _that works_
-
-## Procedure
+To build a fresh conda environment with cuDF and cuML fit for development, named `cuml-mmdd` where `mm` is the current month and `dd` is the current day, do the following steps:
 
 1. Install `miniconda3`:
 
@@ -40,35 +25,80 @@ export NUMBAPRO_NVVM=/usr/local/cuda/nvvm/lib64/libnvvm.so
 export NUMBAPRO_LIBDEVICE=/usr/local/cuda/nvvm/libdevice
 ```
 
-2. Clone this repository:
+2. Clone this branch of the repo and change directory to the repo root:
 
 ```bash
-$ git clone --recursive https://github.com/mt-jones/build-rapids.git
-```
-
-3. Build and install RAPIDS:
-
-```bash
+$ git clone git@github.com:dantegd/build-rapids.git bld-cuml-dev --single-branch -b dev-cuml
 $ cd build-rapids
-$ bash build-rapids.sh
 ```
 
-If you have multiple versions of GCC installed, you may specify compiler version by defining `CC`, `CXX`, `CUDAHOSTCXX`:
+3. Clone the desired cuDF and cuML branches, for example the 0.5 branches for both:
 
 ```bash
-CC=/path/to/gcc-X \
-CXX=/path/to/g++-X \
-CUDAHOSTCXX=/path/to/g++-X \
-bash build-rapids.sh
+$ git clone --recurse-submodules https://github.com/rapidsai/cudf.git --single-branch -b branch-0.5
+$ git clone --recurse-submodules https://github.com/rapidsai/cuml.git --single-branch -b branch-0.5
 ```
 
-where `X` is the version number. For example,
+4. Run the build script. Note that there is an optional **-g** parameter to specify what architecture to build cuML for, which **significantly** reduces its compilation time:
 
 ```bash
-CC=/path/to/gcc-5 \
-CXX=/path/to/g++-5 \
-CUDAHOSTCXX=/path/to/g++-5 \
-bash build-rapids.sh
+$ bash build-rapids.sh -g 70
 ```
 
-compiles RAPIDS using GCC version 5.
+5. (Optional) To test cuDF, starting in the repo root:
+
+```bash
+$ source activate cuml-xxyy
+$ cd cudf/python
+$ py.test
+```
+
+6. (Optional) To test cuML, starting in the repo root:
+
+```bash
+$ cd cuml/cuML
+$ ./ml_test
+$ cd ../../python
+$ py.test cuML/test
+```
+
+After the environment is ready, the normal procedures for building cuDF/cuML can be followed (detailed in their corresponding repository readme's).
+
+## Cleaning folders for a new build
+
+An explicit script for cleaning all the folders to rebuild everything from scratch is coming in the near future, meanwhile you can follow the next steps:
+
+1. Remove cuDF build products:
+
+```bash
+$ rm -rf cudf/cpp/build/
+$ rm -r rm -rf cudf/python/cudf/bindings/*.cpp
+```
+
+2. Remove cuML build products:
+
+```bash
+$ rm -rf cuml/cuML/build/
+$ rm -rf cuml/python/cuML/cuml.cpp
+```
+
+3. (Optional) Remove the conda environment, replacing `mmdd` for their correct number:
+
+```bash
+$ source deactivate # Only necessary if conda environment is active
+$ conda env remove -n cuml-mmdd -y
+```
+
+Afterwards, a new clean environment should be buildable following the instructions in the first section.
+
+## Known issues:
+
+- If using CUDA10, knn of cuml is not available unless building faiss-gpu from source with cuda10 or using an official RAPIDS container.
+- Compilation times of cuML are relatively large for branch 0.5 since the new dbscan, I **highly** recommend scpecifying the gpu architecture due to this.
+
+
+## Upcoming features:
+
+- Cleaning script
+- Automated cloning of cuDF/cuML repos with possibility of selecting the branch.
+
