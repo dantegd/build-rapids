@@ -18,7 +18,7 @@ bash utils/build-conda-env.sh
 source activate $RAPIDS_ENV_NAME && \
 bash utils/build-cudf.sh && \
 bash utils/build-cuml.sh && \
-echo -e "\n Successfully built and installed cuML for development \n"
+echo -e "\n Successfully built and installed cuML for development in conda environment $RAPIDS_ENV_NAME \n"
 
 
 
