@@ -45,6 +45,8 @@ $ git clone --recurse-submodules https://github.com/rapidsai/cuml.git --single-b
 $ bash build-rapids.sh -g 70
 ```
 
+if no `-g` is specified, then cuML is build for all supported architectures.
+
 5. (Optional) To test cuDF, starting in the repo root:
 
 ```bash
