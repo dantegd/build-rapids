@@ -28,7 +28,7 @@ export NUMBAPRO_LIBDEVICE=/usr/local/cuda/nvvm/libdevice
 2. Clone this branch of the repo and change directory to the repo root:
 
 ```bash
-$ git clone git@github.com:dantegd/build-rapids.git bld-cuml-dev --single-branch -b dev-cuml
+$ git clone git@github.com:dantegd/build-rapids.git --single-branch -b dev-cuml
 $ cd build-rapids
 ```
 
