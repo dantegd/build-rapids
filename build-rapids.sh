@@ -1,14 +1,25 @@
 #!/bin/bash
 
 export RAPIDS_ROOT=$(pwd)
+d=$(date +%m%d)
+export RAPIDS_ENV_NAME="cuml-$d"
 
+while getopts g: opt; do
+  case $opt in
+  g)
+      GPU_ARCHS=$OPTARG
+      ;;
+  esac
+done
+
+echo -e "\n Building new conda environment for cuML development: $RAPIDS_ENV_NAME"
 bash utils/build-conda-env.sh
 
-source activate rapids && \
+source activate $RAPIDS_ENV_NAME && \
 bash utils/build-cudf.sh && \
 bash utils/build-cuml.sh && \
-# bash utils/build-cugraph.sh && \
-bash utils/build-xgboost.sh && \
-bash utils/build-dask-cudf.sh && \
-bash utils/build-dask-xgboost.sh && \
-echo -e "\n successfully built and installed RAPIDS \n"
+echo -e "\n Successfully built and installed cuML for development \n"
+
+
+
+
