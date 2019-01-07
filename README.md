@@ -58,7 +58,7 @@ $ py.test
 6. (Optional) To test cuML, starting in the repo root:
 
 ```bash
-$ cd cuml/cuML
+$ cd cuml/cuML/build
 $ ./ml_test
 $ cd ../../python
 $ py.test cuML/test
