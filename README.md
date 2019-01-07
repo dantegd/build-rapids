@@ -93,7 +93,8 @@ Afterwards, a new clean environment should be buildable following the instructio
 
 ## Known issues:
 
-- If using CUDA10, knn of cuml is not available unless building faiss-gpu from source with cuda10 or using an official RAPIDS container.
+- If using CUDA 10, knn of cuml is not available unless building faiss-gpu from source with cuda10 or using an official RAPIDS container.
+- To use knn in CUDA 9.2, it might still be needed to install the corresponding faiss-gpu: `conda install -c pytorch faiss-gpu -y`
 - Compilation times of cuML are relatively large for branch 0.5 since the new dbscan, I **highly** recommend scpecifying the gpu architecture due to this.
 
 
