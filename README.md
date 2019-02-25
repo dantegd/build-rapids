@@ -32,11 +32,11 @@ $ git clone git@github.com:dantegd/build-rapids.git --single-branch -b dev-cuml
 $ cd build-rapids
 ```
 
-3. Clone the desired cuDF and cuML branches, for example the 0.5 branches for both:
+3. Clone the desired cuDF and cuML branches, for example the 0.6 branches for both:
 
 ```bash
-$ git clone --recurse-submodules https://github.com/rapidsai/cudf.git --single-branch -b branch-0.5
-$ git clone --recurse-submodules https://github.com/rapidsai/cuml.git --single-branch -b branch-0.5
+$ git clone --recurse-submodules https://github.com/rapidsai/cudf.git --single-branch -b branch-0.6
+$ git clone --recurse-submodules https://github.com/rapidsai/cuml.git --single-branch -b branch-0.6
 ```
 
 4. Run the build script. Note that there is an optional **-g** parameter to specify what architecture to build cuML for, which **significantly** reduces its compilation time:
